@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Rotate Circle</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <form>
+        <div id="canvas">
+        </div>
+    </form>
+    <script type="text/javascript">
+        var heigth = 300;
+        var width = 500;
+        var r = 20;
+        var svg = d3.select("#canvas").append("svg").attr("height", heigth).attr("width", width);
+        move();
+        var i = 0;
+        function move()
+        {
+            var circle = svg.append("circle").attr("cx", 100).attr("cy",200).attr("r", r).style("fill", "red");
+            setInterval(function () {
+                i = i + 1;
+                repeat(i);
+            }, 1);
+            function repeat(i)
+            {
+                
+                circle.attr("degrees", i);
+                var adj1 = i * (Math.PI / 180);
+                var cx = 250 - (Math.sin(adj1) * (100 - r));
+                var cy = 150 - (Math.cos(adj1) * (100 - r));
+                circle.attr("cx", cx).attr("cy", cy).attr("r", r);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
