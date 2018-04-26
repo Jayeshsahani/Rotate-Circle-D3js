@@ -18,7 +18,7 @@
         function move()
         {
             var circle = svg.append("circle").attr("cx", 100).attr("cy",200).attr("r", r).style("fill", "red");
-            setInterval(function () {
+            d3.interval(function () {
                 i = i + 1;
                 repeat(i);
             }, 1);
